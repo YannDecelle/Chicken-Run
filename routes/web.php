@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\chickenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,26 +25,20 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+Route::middleware(['auth:sanctum', 'verified'])->group(function() {
 
-//     Route::get('/chicken', [InsertProject::class, "index"])->name('chicken.index');
+    Route::get('/chicken', [chickenController::class, "index"])->name('chicken.index');
 
-//     Route::get('/chicken/{id}/edit', [InsertProject::class, "edit"])->name('chicken.edit');
+    Route::get('/chicken/{id}/edit', [chickenController::class, "edit"])->name('chicken.edit');
 
-//     Route::put('/chicken/{id}', [InsertProject::class, "update"])->name('chicken.update');
+    Route::put('/chicken/{id}', [chickenController::class, "update"])->name('chicken.update');
 
-//     Route::get('/chicken/add', [InsertProject::class, "create"])->name('chicken.create');
+    Route::get('/chicken/add', [chickenController::class, "create"])->name('chicken.create');
 
-//     Route::post('/chicken', [InsertProject::class, "store"])->name('chicken.store');
+    Route::post('/chicken', [chickenController::class, "store"])->name('chicken.store');
 
-//     Route::post('/chicken', [InsertProject::class, "store"])->name('chicken.delete');
-// });
-
-
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/chicken', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+    Route::delete('/chicken', [chickenController::class, "destroy"])->name('chicken.destroy');
+});
 
 
 

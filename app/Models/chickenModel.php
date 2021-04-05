@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class chickenModel extends Model
 {
+    protected $table = 'chickuser';
+    protected $fillable = ['name','birthday', 'weight', 'steps', 'isRunning'];
+
     use HasFactory;
 }
