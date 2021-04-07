@@ -34,8 +34,7 @@ class chickenController extends Controller
 // Fonction de génération de la page chicken/add grâce à la route correspondante dans routes>web.php
     public function create()
     {
-        $chickens = chickenModel::all();
-        return Inertia::render('CreateChicken', ['chickens' => $chickens]);
+        return Inertia::render('CreateChicken');
     }
 // Fonction d'update de la base de donnée
     public function update($id, Request $request)

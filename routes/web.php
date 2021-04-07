@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
 
     Route::get('/chicken/{id}/edit', [chickenController::class, "edit"])->name('chicken.edit');
 
-    Route::get('/chicken/{id}', [chickenController::class, "view"])->name('chicken.view');
+    // Route::get('/chicken/{id}', [chickenController::class, "view"])->name('chicken.view');
 
     Route::put('/chicken/{id}', [chickenController::class, "update"])->name('chicken.update');
 

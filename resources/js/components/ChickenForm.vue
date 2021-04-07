@@ -7,7 +7,7 @@
                 <div class="flex justify-between flex-row items-center"><label>Weight</label><input type="number" name="weight" v-model="form.weight" autocomplete="weight" required></div>
                 <div class="flex justify-end flex-row items-center">
                     <a v-bind:href="route('chicken.index')" class="focus:outline-none border text-black text-sm py-2.5 px-5 rounded-md bg-white hover:bg-white hover:shadow-lg">Cancel</a>
-                    <button class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-800 hover:bg-blue-600 hover:shadow-lg">Save</button>
+                    <button class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-red-600 hover:bg-red-500 hover:shadow-lg">Save</button>
                 </div>
             </form>
         </div>

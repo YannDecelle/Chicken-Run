@@ -21,7 +21,7 @@
         </div>
         <div>
             <div>
-                <a href="/chicken">Jouer</a>
+                <a href="/chicken" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-red-600 hover:bg-red-500 hover:shadow-lg">Jouer</a>
            </div>
         </div>
     </div>

@@ -27,3 +27,5 @@ Le site est réalisé en utilisant les fonctionnalité de Laravel, Controllers, 
 En cliquant sur jouer si vous avez un compte, vous serez amené à une page simple avec une liste. En cliquant sur un des élément de la liste on peut lui ajouter +1 au compteur "steps" si la variable IsRunning est réglée sur true. 
 
 Il est également possible de modifier un élément et de le supprimer. 
+
+Un seeder est également disponible afin de vous permettres de peupler la base de données.
