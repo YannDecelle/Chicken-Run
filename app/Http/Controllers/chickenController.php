@@ -11,27 +11,27 @@ class chickenController extends Controller
     public function index()
     {
         return Inertia::render('Dashboard', [
-            "chicken" => chickenModel::all()
+            "chickens" => chickenModel::all()
         ]);
     }
 
     public function edit($id)
     {
-        $chicken = chickenModel::findOrFail($id);
+        $chickens = chickenModel::findOrFail($id);
 
         return Inertia::render('EditChicken', [
-            'chicken' => $chicken]);
+            'chickens' => $chickens]);
     }
 
     public function create()
     {
-        $chicken = chickenModel::all();
-        return Inertia::render('CreateChicken', ['chicken' => $chicken]);
+        $chickens = chickenModel::all();
+        return Inertia::render('CreateChicken', ['chickens' => $chickens]);
     }
 
     public function update($id, Request $request)
     {
-        $chicken = chickenModel::findOrFail($id);
+        $chickens = chickenModel::findOrFail($id);
 
         $this->validate($request, [
             'name',
@@ -41,7 +41,7 @@ class chickenController extends Controller
             'isRunning'
         ]);
 
-        $chicken->update($request->only('name','birthday', 'weight'));
+        $chickens->update($request->only('name','birthday', 'weight', 'steps', 'isRunning'));
 
         return redirect()->route('chicken.index');
 
@@ -62,23 +62,12 @@ class chickenController extends Controller
         return redirect()->route('chicken.index');
     }
 
-    public function destroy($id, Request $request)
+    public function destroy($id)
     {
-        $chicken = chickenModel::findOrFail($id);
+        $chickens = chickenModel::findOrFail($id);
 
-        $chicken ->destroy();
+        $chickens ->delete();
 
         return redirect()->route('chicken.index');
-
-    }
-
-    public function toggle($id, Request $request)
-    {
-        $chicken = chickenModel::findOrFail($id);
-
-        $chicken ->destroy();
-
-        return redirect()->route('chicken.index');
-
     }
 }

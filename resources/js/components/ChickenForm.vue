@@ -5,13 +5,9 @@
                 <div class="flex justify-between flex-row items-center"><label>Name</label><input type="text" name="name" v-model="form.name" autocomplete="name" required></div>
                 <div class="flex justify-between flex-row items-center"><label>Birthday</label><input type="date" name="birthday" v-model="form.birthday" autocomplete="birthday" required></div>
                 <div class="flex justify-between flex-row items-center"><label>Weight</label><input type="number" name="weight" v-model="form.weight" autocomplete="weight" required></div>
-                
                 <div class="flex justify-end flex-row items-center">
-                    <a href="/chicken" class="focus:outline-none border text-black text-sm py-2.5 px-5 rounded-md bg-white hover:bg-white hover:shadow-lg">Cancel</a>
+                    <a v-bind:href="route('chicken.index')" class="focus:outline-none border text-black text-sm py-2.5 px-5 rounded-md bg-white hover:bg-white hover:shadow-lg">Cancel</a>
                     <button class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-800 hover:bg-blue-600 hover:shadow-lg">Save</button>
-                    <!-- <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Save
-                    </jet-button> -->
                 </div>
             </form>
         </div>
@@ -24,18 +20,18 @@
 
     export default 
     {
+        props: ['chickens'],
         components: 
         {
             JetApplicationLogo,
             JetButton,
         },
-        props: ['chicken'],
         data() {
             return {
                 form: this.$inertia.form({
-                    name: this.post ? this.post.name : '',
-                    birthday: this.post ? this.post.birthday : '',
-                    weight: this.post ? this.post.weight : ''
+                    name: this.chickens ? this.chickens.name : '',
+                    birthday: this.chickens ? this.chickens.birthday : '',
+                    weight: this.chickens ? this.chickens.weight : ''
                 }),
             }
         },
@@ -43,14 +39,20 @@
         {
             submitForm() 
             {
-                if (this.post) 
+                if (this.chickens) 
                 {
-                    this.$inertia.put(this.route('chicken.update', this.post.id), this.form);
-                } else 
+                    this.$inertia.put(this.route('chicken.update', this.chickens.id), this.form);
+                } 
+                else 
                 {
                     this.$inertia.post(this.route('chicken.store'), this.form);
                 }
             },
+            testID()
+            {
+                var result = this.chickens;
+                console.log(result);
+            }
         }
     }
 </script>

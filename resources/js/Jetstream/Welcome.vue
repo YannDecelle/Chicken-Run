@@ -9,7 +9,7 @@
                 <a href="/chicken/add">+  Add Chicken</a>
             </div>
             <!-- Appel vers le composant ChickenList -->
-            <ChickenList :chicken="chicken"/>
+            <ChickenList :chickens="chickens"/>
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@
     import ChickenList from '../components/ChickenList';
 
     export default {
-        props:['chicken'],
+        props:['chickens'],
         components: {
             JetApplicationLogo,
             ChickenList

@@ -37,7 +37,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
 
     Route::post('/chicken', [chickenController::class, "store"])->name('chicken.store');
 
-    Route::delete('/chicken', [chickenController::class, "destroy"])->name('chicken.destroy');
+    Route::delete('/chicken/{id}', [chickenController::class, "destroy"])->name('chicken.destroy');
+
 });
 
 

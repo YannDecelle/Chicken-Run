@@ -13,30 +13,35 @@
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
-                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <tr class="border-b border-gray-200 hover:bg-gray-100" v-for="chicken in chickens" :key="chicken.id">
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="mr-2">
-                                            <span class="font-medium">Lorem</span>
+                                            <span class="font-medium">{{chicken.name}}</span>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
-                                        <span>12/12/12</span>
+                                        <span>{{chicken.birthday}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
-                                    62
+                                    {{chicken.steps}}
                                 </td>
-                                <td class="py-3 px-6 text-center">
+                                <td class="py-3 px-6 text-center" v-if="chicken.isRunning === 1">
                                     <a class="bg-purple-500 text-white py-1 px-3 rounded-full text-xs">Is running</a>
                                 </td>
-                                <td class="py-3 px-6 text-center">
-                                    <a class="bg-green-500 text-white py-1 px-3 rounded-full text-xs">Edit</a>
+                                <td class="py-3 px-6 text-center" v-else-if="chicken.isRunning === 0">
+                                    <a class="bg-gray-300 text-gray-100 py-1 px-3 rounded-full text-xs">Not running</a>
                                 </td>
                                 <td class="py-3 px-6 text-center">
-                                    <a class="bg-red-500 text-white py-1 px-3 rounded-full text-xs">Delete</a>
+                                    <a class="bg-green-500 text-white py-1 px-3 rounded-full text-xs" :href="route('chicken.edit', chicken.id)">Edit</a>
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    <form :action="route('chicken.destroy', chicken.id)" method="post">
+                                        <input type="submit" value="Delete" >
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>
@@ -46,13 +51,17 @@
 </template>
 
 <style scoped>
-
+#deletebut
+{
+    cursor: pointer;
+}
 </style>
 
 <script>
 
     export default {
+        props:['chickens'],
         components: {
-        }
+        },
     }
 </script>
