@@ -39,8 +39,8 @@
                                     <a class="bg-green-500 text-white py-1 px-3 rounded-full text-xs" :href="route('chicken.edit', chicken.id)">Edit</a>
                                 </td>
                                 <td class="py-3 px-6 text-center">
-                                    <form :action="route('chicken.destroy', chicken.id)" method="post">
-                                        <input type="submit" value="Delete" >
+                                    <form @submit.prevent="deleteElement(chicken.id)">
+                                        <input type="submit" value="Delete" class="bg-red-500 text-white py-1 px-3 rounded-full text-xs">
                                     </form>
                                 </td>
                             </tr>
@@ -62,6 +62,21 @@
     export default {
         props:['chickens'],
         components: {
+        },
+        methods:
+        {
+            deleteElement(id)
+            {
+                if (this.chickens) 
+                {
+                    this.$inertia.delete(this.route('chicken.destroy', id), this.form);
+                    // console.log(id);
+                }
+                else
+                {
+                    alert('No ID detected')
+                }
+            }
         },
     }
 </script>

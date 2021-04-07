@@ -70,7 +70,7 @@ class chickenController extends Controller
         return redirect()->route('chicken.index');
     }
 // Fonction de supression de la base de donnée
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         $chickens = chickenModel::findOrFail($id);
 
