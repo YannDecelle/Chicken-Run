@@ -36,5 +36,16 @@
         props:['chickens'],
         components: {
         },
+        mounted() 
+        {
+            this.AddStep();
+        },
+        methods:
+        {
+            AddStep()
+            {
+                alert('Page Loaded')
+            }
+        },
     }
 </script>
